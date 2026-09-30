@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db
+
+# Data artifacts
+/data/processed/*
+/models/**/*.pkl
+/models/**/*.joblib
+/models/**/*.keras
+/models/**/*.h5
+
+# Keep source archives tracked only when intentionally committed

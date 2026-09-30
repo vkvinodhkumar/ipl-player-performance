@@ -1,0 +1,17 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+tensorflow
+django
+djangorestframework
+psycopg[binary]
+sqlalchemy
+python-dotenv
+joblib
+boto3
+gunicorn
+requests
+openpyxl
