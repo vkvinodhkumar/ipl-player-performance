@@ -1,0 +1,77 @@
+name: ipl-player-performance
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python
+  - python=3.12
+
+  # Jupyter
+  - jupyter
+  - jupyterlab
+  - notebook
+  - ipykernel
+
+  # Core Data Science
+  - numpy
+  - pandas
+  - scipy
+
+  # Visualization
+  - matplotlib
+  - seaborn
+  - plotly
+
+  # Machine Learning
+  - scikit-learn
+  - xgboost
+
+  # Statistics
+  - statsmodels
+
+  # Database
+  - sqlalchemy
+  - psycopg2
+
+  # Utilities
+  - openpyxl
+  - pyyaml
+  - requests
+  - tqdm
+
+  # Development
+  - pytest
+  - pytest-cov
+  - black
+  - flake8
+
+  # Git
+  - git
+
+  # pip packages
+  - pip
+  - pip:
+      # Django / API
+      - django
+      - djangorestframework
+      - django-cors-headers
+      - python-dotenv
+      - dj-database-url
+
+      # API / Validation
+      - pydantic
+      - pydantic-settings
+
+      # Model persistence
+      - joblib
+
+      # AWS
+      - boto3
+
+      # HTTP
+      - httpx
+
+      # Environment / configuration
+      - python-decouple
