@@ -1,0 +1,10 @@
+dataset,target,split,rows,target_date_start,target_date_end
+batting,next_match_runs,train,11074,2008-05-03,2022-04-10
+batting,next_match_runs,validation,2373,2022-04-10,2024-04-29
+batting,next_match_runs,test,2374,2024-04-29,2026-05-31
+bowling,next_match_wickets,train,8634,2008-05-03,2022-04-02
+bowling,next_match_wickets,validation,1850,2022-04-02,2024-04-26
+bowling,next_match_wickets,test,1851,2024-04-26,2026-05-31
+bowling,next_match_runs_conceded,train,8634,2008-05-03,2022-04-02
+bowling,next_match_runs_conceded,validation,1850,2022-04-02,2024-04-26
+bowling,next_match_runs_conceded,test,1851,2024-04-26,2026-05-31

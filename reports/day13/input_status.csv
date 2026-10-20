@@ -1,0 +1,8 @@
+source,path,status,columns
+day8_metrics,D:\Git\Personal\ipl-player-performance\reports\day8\model_comparison_metrics.csv,FOUND,"dataset, target, model, split, feature_count, train_rows, validation_rows, test_rows, MAE, RMSE, R2"
+day8_selection,D:\Git\Personal\ipl-player-performance\reports\day8\validation_model_selection.csv,FOUND,"dataset, target, selected_by_validation_mae, validation_mae, saved_pipeline"
+day10_metrics,D:\Git\Personal\ipl-player-performance\reports\day10\final_candidate_test_metrics.csv,FOUND,"dataset, target, selected_model_from_day8, features, train_rows, validation_rows, final_fit_rows_train_plus_validation, test_rows, test_start, test_end, MAE, RMSE, R2, mean_residual_actual_minus_predicted"
+day10_splits,D:\Git\Personal\ipl-player-performance\reports\day10\final_split_summary.csv,FOUND,"dataset, target, all_usable_rows, train_rows, validation_rows, test_rows, train_start, train_end, validation_start, validation_end, test_start, test_end"
+day12_metrics,D:\Git\Personal\ipl-player-performance\reports\day12\selected_lstm_gru_test_metrics.csv,FOUND,"dataset, target, selected_architecture, train_samples, validation_samples, test_samples, feature_count, test_MAE, test_RMSE, test_R2, test_mean_residual_actual_minus_predicted"
+day12_selection,D:\Git\Personal\ipl-player-performance\reports\day12\validation_architecture_comparison.csv,FOUND,"dataset, target, architecture, epochs_run, validation_MAE, validation_RMSE, validation_R2"
+day12_splits,D:\Git\Personal\ipl-player-performance\reports\day12\chronological_split_summary.csv,FOUND,"dataset, target, split, rows, target_date_start, target_date_end"

@@ -1,0 +1,4 @@
+dataset,target,rows,non_missing,missing,mean,median,std,min,max
+batting_features,next_match_runs,18030,18030,0,20.704048807542986,13.0,21.83064369097579,0.0,175.0
+bowling_features,next_match_wickets,14123,14123,0,0.9223960914819798,1.0,1.0012365289502887,0.0,6.0
+bowling_features,next_match_runs_conceded,14123,14123,0,26.89725978899667,26.0,11.18885505981222,0.0,76.0

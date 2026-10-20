@@ -1,0 +1,4 @@
+dataset,target,selected_model,rows,train_rows,validation_rows,test_rows,train_start,train_end,validation_start,validation_end,test_start,test_end,feature_count
+batting,next_match_runs,LinearRegression,18030,12621,2704,2705,2008-04-18,2021-10-08,2021-10-08,2024-04-13,2024-04-13,2026-05-29,15
+bowling,next_match_wickets,LinearRegression,14123,9886,2118,2119,2008-04-18,2021-10-01,2021-10-01,2024-04-08,2024-04-08,2026-05-29,15
+bowling,next_match_runs_conceded,XGBoost,14123,9886,2118,2119,2008-04-18,2021-10-01,2021-10-01,2024-04-08,2024-04-08,2026-05-29,15

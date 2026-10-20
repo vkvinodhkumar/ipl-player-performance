@@ -1,0 +1,4 @@
+dataset,target,status,reason
+batting,next_match_runs,COMPLETED,Selected by Day 8 validation MAE: LinearRegression
+bowling,next_match_wickets,COMPLETED,Selected by Day 8 validation MAE: LinearRegression
+bowling,next_match_runs_conceded,COMPLETED,Selected by Day 8 validation MAE: XGBoost

@@ -1,0 +1,4 @@
+dataset,target,selected_model_from_day8,features,train_rows,validation_rows,final_fit_rows_train_plus_validation,test_rows,test_start,test_end,MAE,RMSE,R2,mean_residual_actual_minus_predicted
+batting,next_match_runs,LinearRegression,15,12621,2704,15325,2705,2024-04-13,2026-05-29,16.850732847777124,22.619523589008026,0.10508016486044014,2.5559416371676114
+bowling,next_match_wickets,LinearRegression,15,9886,2118,12004,2119,2024-04-08,2026-05-29,0.7677977841455583,0.9892577300753391,0.02648134245328304,0.04072674839227706
+bowling,next_match_runs_conceded,XGBoost,15,9886,2118,12004,2119,2024-04-08,2026-05-29,9.516070027011585,12.015263468110888,0.05311837938029551,3.337681468335341

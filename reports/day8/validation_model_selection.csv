@@ -1,0 +1,4 @@
+dataset,target,selected_by_validation_mae,validation_mae,saved_pipeline
+batting,next_match_runs,LinearRegression,15.864844965151054,D:\Git\Personal\ipl-player-performance\models\day8\batting_next_match_runs_selected_pipeline.joblib
+bowling,next_match_wickets,LinearRegression,0.7890859063237508,D:\Git\Personal\ipl-player-performance\models\day8\bowling_next_match_wickets_selected_pipeline.joblib
+bowling,next_match_runs_conceded,XGBoost,8.490232912969544,D:\Git\Personal\ipl-player-performance\models\day8\bowling_next_match_runs_conceded_selected_pipeline.joblib

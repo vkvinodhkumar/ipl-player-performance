@@ -1,0 +1,9 @@
+dataset,check,issue_count,status,note
+matches,missing match_id,0,PASS,
+batting,missing match_id,0,PASS,
+bowling,missing match_id,0,PASS,
+matches,duplicate match_id rows,0,PASS,
+batting,missing player_name,0,PASS,
+batting,duplicate match_id + player_name rows,0,PASS,
+bowling,missing player_name,0,PASS,
+bowling,duplicate match_id + player_name rows,0,PASS,

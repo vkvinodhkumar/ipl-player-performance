@@ -1,0 +1,6 @@
+dataset,rows,columns,unique_matches,unique_players,date_min,date_max
+batting_player_match,18768,24,1243,738.0,2008-04-18,2026-05-31
+bowling_player_match,14700,24,1243,577.0,2008-04-18,2026-05-31
+match_metadata,1243,9,1243,,2008-04-18,2026-05-31
+batting_next_match_features,18030,49,1240,633.0,2008-04-18,2026-05-29
+bowling_next_match_features,14123,50,1240,503.0,2008-04-18,2026-05-29

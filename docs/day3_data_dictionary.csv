@@ -1,0 +1,20 @@
+file,field,definition
+batting_player_match.csv,match_id,Source match ID from Cricsheet JSON
+batting_player_match.csv,date,Match date parsed from Cricsheet metadata
+batting_player_match.csv,season,"Season value from Cricsheet metadata, stored as text"
+batting_player_match.csv,team,Team batting in the match
+batting_player_match.csv,opposition,Other team in the match
+batting_player_match.csv,player_name,Original batter name from source
+batting_player_match.csv,player_id,Cricsheet registry ID when available; otherwise null
+batting_player_match.csv,runs,Sum of runs credited to batter
+batting_player_match.csv,balls_faced,Deliveries faced excluding wides and no-balls under this implementation
+batting_player_match.csv,fours/sixes,"Batter-scored boundaries, excluding marked non-boundary runs"
+batting_player_match.csv,strike_rate,Runs / balls_faced * 100; null if balls faced is zero
+bowling_player_match.csv,legal_balls,Deliveries counted as legal; excludes wides and no-balls
+bowling_player_match.csv,overs,"Cricket overs display derived from legal balls, e.g. 3.2 means 3 overs and 2 balls"
+bowling_player_match.csv,runs_conceded,Batter runs plus wides and no-balls
+bowling_player_match.csv,wickets,Wickets credited to bowler under the explicit dismissal-kind rule
+bowling_player_match.csv,economy,Runs conceded * 6 / legal balls; null if no legal balls
+match_metadata.csv,match_id,Cricsheet JSON filename stem
+match_metadata.csv,team_1/team_2,Teams as listed in Cricsheet match metadata
+player_registry_observations.csv,registry_id,Cricsheet registry person ID when available

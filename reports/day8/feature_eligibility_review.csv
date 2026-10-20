@@ -1,0 +1,100 @@
+column,dtype,decision,reason,missing_pct,dataset
+match_id,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+season,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+venue,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+city,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,4.08,batting
+team_1,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+team_2,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+match_type,float64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,100.0,batting
+team,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+opposition,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+player_name,str,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+player_id,str,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+player_name_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+team_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+opposition_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+runs,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+balls_faced,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+fours,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+sixes,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+batting_position,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+was_dismissed,bool,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+dismissal_kind,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,21.86,batting
+innings_count,int64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+strike_rate,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.04,batting
+match_date,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+season_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+venue_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+city_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,4.08,batting
+team_1_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+team_2_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+date,datetime64[us],EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+next_match_runs,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+next_match_id,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+next_match_date,datetime64[us],EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,batting
+matches_seen_before,int64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,batting
+prior_career_batting_runs,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_mean_batting_runs,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_count_batting_runs,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,batting
+prior_career_batting_balls_faced,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_mean_batting_balls_faced,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_count_batting_balls_faced,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,batting
+prior_career_batting_fours,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_mean_batting_fours,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_count_batting_fours,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,batting
+prior_career_batting_sixes,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_mean_batting_sixes,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_count_batting_sixes,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,batting
+prior_career_batting_strike_rate,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_mean_batting_strike_rate,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.51,batting
+prior_last5_count_batting_strike_rate,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,batting
+match_id,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+season,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+venue,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+city,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,4.17,bowling
+team_1,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+team_2,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+match_type,float64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,100.0,bowling
+team,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+opposition,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+player_name,str,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+player_id,str,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+player_name_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+team_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+opposition_norm,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+legal_balls,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+runs_conceded,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+wickets,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+wides,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+noballs,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+dots,int64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+innings_count,int64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+overs,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+economy,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.01,bowling
+match_date,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+season_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+venue_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+city_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,4.17,bowling
+team_1_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+team_2_meta,str,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+date,datetime64[us],EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+next_match_wickets,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+next_match_runs_conceded,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+next_match_id,float64,EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+next_match_date,datetime64[us],EXCLUDE,"identifier, target, future metadata, or current-match outcome",0.0,bowling
+matches_seen_before,int64,REVIEW_OR_EXCLUDE,not an approved numeric prior-history feature,0.0,bowling
+prior_career_bowling_wickets,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_mean_bowling_wickets,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_count_bowling_wickets,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,bowling
+prior_career_bowling_runs_conceded,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_mean_bowling_runs_conceded,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_count_bowling_runs_conceded,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,bowling
+prior_career_bowling_legal_balls,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_mean_bowling_legal_balls,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_count_bowling_legal_balls,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,bowling
+prior_career_bowling_dots,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_mean_bowling_dots,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_count_bowling_dots,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,bowling
+prior_career_bowling_economy,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_mean_bowling_economy,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,3.56,bowling
+prior_last5_count_bowling_economy,float64,ELIGIBLE_CANDIDATE,numeric prior-history feature; verify source construction,0.0,bowling
