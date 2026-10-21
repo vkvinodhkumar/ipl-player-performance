@@ -1,0 +1,4 @@
+target,readiness,notes
+next_match_runs,READY FOR INTEGRATION,Required reports and artifacts passed the notebook checks.
+next_match_wickets,READY FOR INTEGRATION,Required reports and artifacts passed the notebook checks.
+next_match_runs_conceded,READY FOR INTEGRATION,Required reports and artifacts passed the notebook checks.

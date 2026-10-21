@@ -1,0 +1,236 @@
+{
+  "stg_ipl_batting_player_match": [
+    {
+      "column": "match_id",
+      "data_type": "bigint"
+    },
+    {
+      "column": "date",
+      "data_type": "text"
+    },
+    {
+      "column": "season",
+      "data_type": "text"
+    },
+    {
+      "column": "venue",
+      "data_type": "text"
+    },
+    {
+      "column": "city",
+      "data_type": "text"
+    },
+    {
+      "column": "team_1",
+      "data_type": "text"
+    },
+    {
+      "column": "team_2",
+      "data_type": "text"
+    },
+    {
+      "column": "match_type",
+      "data_type": "double"
+    },
+    {
+      "column": "team",
+      "data_type": "text"
+    },
+    {
+      "column": "opposition",
+      "data_type": "text"
+    },
+    {
+      "column": "player_name",
+      "data_type": "text"
+    },
+    {
+      "column": "player_id",
+      "data_type": "text"
+    },
+    {
+      "column": "player_name_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "team_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "opposition_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "runs",
+      "data_type": "bigint"
+    },
+    {
+      "column": "balls_faced",
+      "data_type": "bigint"
+    },
+    {
+      "column": "fours",
+      "data_type": "bigint"
+    },
+    {
+      "column": "sixes",
+      "data_type": "bigint"
+    },
+    {
+      "column": "batting_position",
+      "data_type": "bigint"
+    },
+    {
+      "column": "was_dismissed",
+      "data_type": "tinyint"
+    },
+    {
+      "column": "dismissal_kind",
+      "data_type": "text"
+    },
+    {
+      "column": "innings_count",
+      "data_type": "bigint"
+    },
+    {
+      "column": "strike_rate",
+      "data_type": "double"
+    }
+  ],
+  "stg_ipl_bowling_player_match": [
+    {
+      "column": "match_id",
+      "data_type": "bigint"
+    },
+    {
+      "column": "date",
+      "data_type": "text"
+    },
+    {
+      "column": "season",
+      "data_type": "text"
+    },
+    {
+      "column": "venue",
+      "data_type": "text"
+    },
+    {
+      "column": "city",
+      "data_type": "text"
+    },
+    {
+      "column": "team_1",
+      "data_type": "text"
+    },
+    {
+      "column": "team_2",
+      "data_type": "text"
+    },
+    {
+      "column": "match_type",
+      "data_type": "double"
+    },
+    {
+      "column": "team",
+      "data_type": "text"
+    },
+    {
+      "column": "opposition",
+      "data_type": "text"
+    },
+    {
+      "column": "player_name",
+      "data_type": "text"
+    },
+    {
+      "column": "player_id",
+      "data_type": "text"
+    },
+    {
+      "column": "player_name_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "team_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "opposition_norm",
+      "data_type": "text"
+    },
+    {
+      "column": "legal_balls",
+      "data_type": "bigint"
+    },
+    {
+      "column": "runs_conceded",
+      "data_type": "bigint"
+    },
+    {
+      "column": "wickets",
+      "data_type": "bigint"
+    },
+    {
+      "column": "wides",
+      "data_type": "bigint"
+    },
+    {
+      "column": "noballs",
+      "data_type": "bigint"
+    },
+    {
+      "column": "dots",
+      "data_type": "bigint"
+    },
+    {
+      "column": "innings_count",
+      "data_type": "bigint"
+    },
+    {
+      "column": "overs",
+      "data_type": "double"
+    },
+    {
+      "column": "economy",
+      "data_type": "double"
+    }
+  ],
+  "stg_ipl_match_metadata": [
+    {
+      "column": "match_id",
+      "data_type": "bigint"
+    },
+    {
+      "column": "source_file",
+      "data_type": "text"
+    },
+    {
+      "column": "date",
+      "data_type": "text"
+    },
+    {
+      "column": "season",
+      "data_type": "text"
+    },
+    {
+      "column": "venue",
+      "data_type": "text"
+    },
+    {
+      "column": "city",
+      "data_type": "text"
+    },
+    {
+      "column": "team_1",
+      "data_type": "text"
+    },
+    {
+      "column": "team_2",
+      "data_type": "text"
+    },
+    {
+      "column": "match_type",
+      "data_type": "double"
+    }
+  ]
+}

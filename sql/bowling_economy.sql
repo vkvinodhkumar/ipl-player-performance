@@ -6,4 +6,4 @@ SELECT player_name,
             ELSE NULL END AS economy_rate
 FROM bowling_player_match
 GROUP BY player_name
-ORDER BY economy_rate ASC NULLS LAST;\n
+ORDER BY (economy_rate IS NULL), economy_rate ASC;

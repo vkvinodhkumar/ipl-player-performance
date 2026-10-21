@@ -1,0 +1,6 @@
+task,status
+Processed inputs present/readable,PASS
+Candidate keys,PASS
+MySQL DDL draft,DRAFT_GENERATED_REVIEW_REQUIRED
+MySQL connection,PASS
+Documentation generated,PASS

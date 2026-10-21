@@ -1,0 +1,15 @@
+# Day 22 EDA URL additions — merge into django_api/ipl_api/urls.py
+from .eda_views import (
+    EDASummaryAPIView, EDABattingAPIView, EDABowlingAPIView,
+    EDASeasonAPIView, EDAVenueAPIView, EDAOppositionAPIView,
+    EDARecentFormAPIView,
+)
+
+# Add these entries to urlpatterns:
+path("eda/summary/", EDASummaryAPIView.as_view(), name="eda-summary"),
+path("eda/batting/", EDABattingAPIView.as_view(), name="eda-batting"),
+path("eda/bowling/", EDABowlingAPIView.as_view(), name="eda-bowling"),
+path("eda/season/", EDASeasonAPIView.as_view(), name="eda-season"),
+path("eda/venue/", EDAVenueAPIView.as_view(), name="eda-venue"),
+path("eda/opposition/", EDAOppositionAPIView.as_view(), name="eda-opposition"),
+path("eda/recent-form/", EDARecentFormAPIView.as_view(), name="eda-recent-form"),

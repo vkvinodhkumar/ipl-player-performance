@@ -1,0 +1,11 @@
+task,status
+Django project located,PASS
+MySQL configured,PASS
+MySQL connection verified,PASS
+Staging schemas inspected,PASS
+Player-name columns detected,PASS
+Views generated,PASS
+App routes generated,PASS
+ipl_api registered,PASS
+Project URL include merged,PENDING MANUAL CHECK
+Django system check,PASS

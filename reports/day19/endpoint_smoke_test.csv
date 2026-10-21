@@ -1,0 +1,2 @@
+label,url,status_code,content_type,response_preview,error
+Player list,http://127.0.0.1:8000/api/players/,,,,"URLError(ConnectionRefusedError(10061, 'No connection could be made because the target machine actively refused it', None, 10061, None))"

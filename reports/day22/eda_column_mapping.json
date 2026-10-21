@@ -1,0 +1,21 @@
+{
+  "bat_table": "stg_ipl_batting_player_match",
+  "bowl_table": "stg_ipl_bowling_player_match",
+  "meta_table": "stg_ipl_match_metadata",
+  "player": "player_name",
+  "runs": "runs",
+  "balls": "balls_faced",
+  "fours": "fours",
+  "sixes": "sixes",
+  "bat_match": "match_id",
+  "wickets": "wickets",
+  "runs_conceded": "runs_conceded",
+  "overs": "overs",
+  "bowl_match": "match_id",
+  "date": "date",
+  "season": "season",
+  "venue": "venue",
+  "team": null,
+  "opposition": null,
+  "meta_match": "match_id"
+}

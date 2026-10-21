@@ -1,0 +1,9 @@
+# Day 23 prediction routes — merge into existing django_api/ipl_api/urls.py
+from .prediction_views import (
+    BattingPredictionAPIView, BowlingPredictionAPIView, UnifiedPredictionAPIView,
+)
+
+# Add to existing urlpatterns:
+path("predict/batting/", BattingPredictionAPIView.as_view(), name="predict-batting"),
+path("predict/bowling/", BowlingPredictionAPIView.as_view(), name="predict-bowling"),
+path("predict/", UnifiedPredictionAPIView.as_view(), name="predict-unified"),

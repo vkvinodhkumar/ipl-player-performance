@@ -1,0 +1,3 @@
+dataset,table,rows,distinct_nonblank_players
+batting,stg_ipl_batting_player_match,18768,738
+bowling,stg_ipl_bowling_player_match,14700,577

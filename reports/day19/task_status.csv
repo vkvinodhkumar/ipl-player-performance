@@ -1,0 +1,9 @@
+item,value
+project_root,D:\Git\Personal\ipl-player-performance
+django_root,D:\Git\Personal\ipl-player-performance\django_api
+manage_py_check_return_code,0
+project_url_config,D:\Git\Personal\ipl-player-performance\django_api\config\urls.py
+app_url_config,D:\Git\Personal\ipl-player-performance\django_api\ipl_api\urls.py
+endpoint_test_count,1
+endpoint_test_results,Player list=None
+generated_at,2026-10-21T23:26:15

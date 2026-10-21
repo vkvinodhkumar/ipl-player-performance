@@ -1,0 +1,7 @@
+task,status
+mysql_connection,PASS
+all_staging_loads,PASS
+row_counts,PASS
+column_order,PASS
+candidate_keys,PASS
+overall,PASS

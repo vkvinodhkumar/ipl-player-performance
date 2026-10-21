@@ -16,11 +16,11 @@ day12_selection D:\Git\Personal\ipl-player-performance\reports\day12\validation_
 ```text
                   target  model_family            model       MAE      RMSE       R2                 source
          next_match_runs  Classical ML LinearRegression 16.850733 22.619524 0.105080 Day 10 final candidate
-         next_match_runs Deep learning             LSTM 16.700930 22.505660 0.105188 Day 12 final candidate
+         next_match_runs Deep learning              GRU 16.672674 22.373937 0.115632 Day 12 final candidate
       next_match_wickets  Classical ML LinearRegression  0.767798  0.989258 0.026481 Day 10 final candidate
-      next_match_wickets Deep learning             LSTM  0.782648  0.999579 0.019520 Day 12 final candidate
+      next_match_wickets Deep learning             LSTM  0.786450  1.000268 0.018168 Day 12 final candidate
 next_match_runs_conceded  Classical ML          XGBoost  9.516070 12.015263 0.053118 Day 10 final candidate
-next_match_runs_conceded Deep learning              GRU  9.509530 11.931938 0.049363 Day 12 final candidate
+next_match_runs_conceded Deep learning              GRU  9.515056 11.926662 0.050204 Day 12 final candidate
 ```
 
 ## Test period review

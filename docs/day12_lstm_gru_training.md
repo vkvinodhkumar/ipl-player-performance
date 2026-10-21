@@ -11,26 +11,26 @@ bowling next_match_runs_conceded COMPLETED
 ## Validation architecture comparison
 ```text
 dataset                   target architecture  epochs_run  validation_MAE  validation_RMSE  validation_R2
-batting          next_match_runs         LSTM          36       16.311644        21.884249       0.106725
-batting          next_match_runs          GRU          48       16.338200        21.845088       0.109919
-bowling       next_match_wickets         LSTM          17        0.802349         1.040258       0.026574
-bowling       next_match_wickets          GRU          27        0.806429         1.039475       0.028038
-bowling next_match_runs_conceded         LSTM          40        8.462542        10.676995       0.134718
-bowling next_match_runs_conceded          GRU          26        8.458755        10.697968       0.131315
+batting          next_match_runs         LSTM          34       16.310572        21.858535       0.108823
+batting          next_match_runs          GRU          46       16.303169        21.842305       0.110146
+bowling       next_match_wickets         LSTM          18        0.804558         1.038687       0.029512
+bowling       next_match_wickets          GRU          15        0.809316         1.042050       0.023218
+bowling next_match_runs_conceded         LSTM          31        8.477995        10.718026       0.128055
+bowling next_match_runs_conceded          GRU          37        8.466956        10.670727       0.135733
 ```
 
 ## Selected architecture test metrics
 ```text
 dataset                   target selected_architecture  train_samples  validation_samples  test_samples  feature_count  test_MAE  test_RMSE  test_R2  test_mean_residual_actual_minus_predicted
-batting          next_match_runs                  LSTM          11074                2373          2374             15 16.700930  22.505660 0.105188                                   2.578387
-bowling       next_match_wickets                  LSTM           8634                1850          1851             15  0.782648   0.999579 0.019520                                   0.029028
-bowling next_match_runs_conceded                   GRU           8634                1850          1851             15  9.509530  11.931938 0.049363                                   3.587987
+batting          next_match_runs                   GRU          11074                2373          2374             15 16.672674  22.373937 0.115632                                   2.294101
+bowling       next_match_wickets                  LSTM           8634                1850          1851             15  0.786450   1.000268 0.018168                                   0.009670
+bowling next_match_runs_conceded                   GRU           8634                1850          1851             15  9.515056  11.926662 0.050204                                   3.401206
 ```
 
 ## Artifacts
 ```text
 dataset                   target selected_architecture                                                                                     model_path                                                                                            imputer_path                                                                                            scaler_path                                                                                  feature_manifest_path
-batting          next_match_runs                  LSTM         D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_lstm.keras         D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_lstm_imputer.joblib         D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_lstm_scaler.joblib         D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_lstm_features.json
+batting          next_match_runs                   GRU          D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_gru.keras          D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_gru_imputer.joblib          D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_gru_scaler.joblib          D:\Git\Personal\ipl-player-performance\models\day12\batting_next_match_runs_gru_features.json
 bowling       next_match_wickets                  LSTM      D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_wickets_lstm.keras      D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_wickets_lstm_imputer.joblib      D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_wickets_lstm_scaler.joblib      D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_wickets_lstm_features.json
 bowling next_match_runs_conceded                   GRU D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_runs_conceded_gru.keras D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_runs_conceded_gru_imputer.joblib D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_runs_conceded_gru_scaler.joblib D:\Git\Personal\ipl-player-performance\models\day12\bowling_next_match_runs_conceded_gru_features.json
 ```

@@ -1,0 +1,10 @@
+task,status
+Previous day outputs inspection,PASS
+Required package availability,PASS
+MySQL URL configuration,PASS
+Django project created/present,PASS
+Django api app created/present,REVIEW
+Settings patch,PASS
+Django system check,PASS
+Read-only MySQL connection check,PASS
+OVERALL,REVIEW REQUIRED

@@ -1,0 +1,26 @@
+{
+  "dataset": "batting",
+  "target": "next_match_runs",
+  "architecture": "GRU",
+  "sequence_length": 5,
+  "feature_columns_in_order": [
+    "prior_career_batting_runs",
+    "prior_last5_mean_batting_runs",
+    "prior_last5_count_batting_runs",
+    "prior_career_batting_balls_faced",
+    "prior_last5_mean_batting_balls_faced",
+    "prior_last5_count_batting_balls_faced",
+    "prior_career_batting_fours",
+    "prior_last5_mean_batting_fours",
+    "prior_last5_count_batting_fours",
+    "prior_career_batting_sixes",
+    "prior_last5_mean_batting_sixes",
+    "prior_last5_count_batting_sixes",
+    "prior_career_batting_strike_rate",
+    "prior_last5_mean_batting_strike_rate",
+    "prior_last5_count_batting_strike_rate"
+  ],
+  "scaling": "StandardScaler fitted on flattened training sequences only",
+  "imputation": "Median imputer fitted on flattened training sequences only",
+  "random_seed": 42
+}

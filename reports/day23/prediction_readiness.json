@@ -1,0 +1,41 @@
+{
+  "model_files_found": 22,
+  "feature_or_metadata_files_found": 23,
+  "batting_feature_dataset_exists": true,
+  "bowling_feature_dataset_exists": true,
+  "required_targets": [
+    "next_match_runs",
+    "next_match_wickets",
+    "next_match_runs_conceded"
+  ],
+  "api_readiness_checks": [
+    {
+      "check": "exact artifact path and format known",
+      "status": "review inventory"
+    },
+    {
+      "check": "feature names and order saved with model",
+      "status": "must verify"
+    },
+    {
+      "check": "preprocessing pipeline serialized with model",
+      "status": "must verify"
+    },
+    {
+      "check": "target and model type identified",
+      "status": "must verify"
+    },
+    {
+      "check": "training/test split and metrics documented",
+      "status": "review reports"
+    },
+    {
+      "check": "API input validation defined",
+      "status": "pending"
+    },
+    {
+      "check": "single and batch predictions tested",
+      "status": "pending"
+    }
+  ]
+}

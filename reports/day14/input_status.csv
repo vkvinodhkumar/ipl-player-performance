@@ -1,0 +1,7 @@
+source,status,path,rows
+day12_metrics,FOUND,D:\Git\Personal\ipl-player-performance\reports\day12\selected_lstm_gru_test_metrics.csv,3
+day12_predictions,FOUND,D:\Git\Personal\ipl-player-performance\reports\day12\selected_lstm_gru_test_predictions.csv,6076
+day12_manifest,FOUND,D:\Git\Personal\ipl-player-performance\reports\day12\model_artifacts_manifest.csv,3
+day12_status,FOUND,D:\Git\Personal\ipl-player-performance\reports\day12\task_status.csv,3
+day13_comparison,FOUND,D:\Git\Personal\ipl-player-performance\reports\day13\ml_vs_dl_model_comparison.csv,6
+day13_interpretation,FOUND,D:\Git\Personal\ipl-player-performance\reports\day13\comparison_interpretation.csv,3

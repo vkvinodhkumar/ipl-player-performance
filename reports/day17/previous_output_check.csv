@@ -1,0 +1,8 @@
+path,exists,type
+docs\day15_mysql_setup_schema_preparation.md,True,file
+docs\day16_mysql_data_loading_validation.md,True,file
+reports\day16\database_validation.csv,True,file
+reports\day16\task_status.csv,True,file
+data\processed\batting_player_match.csv,True,file
+data\processed\bowling_player_match.csv,True,file
+data\processed\match_metadata.csv,True,file

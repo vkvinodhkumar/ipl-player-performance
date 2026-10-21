@@ -1,0 +1,13 @@
+table,column,status
+stg_ipl_batting_player_match,player_name,present
+stg_ipl_batting_player_match,runs,present
+stg_ipl_batting_player_match,match_id,present
+stg_ipl_batting_player_match,balls_faced,present
+stg_ipl_batting_player_match,fours,present
+stg_ipl_batting_player_match,sixes,present
+stg_ipl_bowling_player_match,player_name,present
+stg_ipl_bowling_player_match,wickets,present
+stg_ipl_bowling_player_match,runs_conceded,present
+stg_ipl_bowling_player_match,overs,present
+stg_ipl_bowling_player_match,match_id,present
+stg_ipl_match_metadata,match_id,present

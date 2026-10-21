@@ -1,0 +1,4 @@
+dataset,candidate_key,resolved_columns,null_key_rows,duplicate_key_rows,status
+batting_player_match,match_id + player_name,match_id + player_name,0,0,PASS
+bowling_player_match,match_id + player_name,match_id + player_name,0,0,PASS
+match_metadata,match_id,match_id,0,0,PASS

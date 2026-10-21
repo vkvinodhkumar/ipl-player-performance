@@ -1,0 +1,8 @@
+endpoint,route,purpose,schema_dependency
+summary,GET /api/eda/summary/,Counts and overall batting/bowling totals,player-match and metadata tables
+batting,GET /api/eda/batting/,"Runs, balls, boundaries, strike rate; grouped by player",batting staging table
+bowling,GET /api/eda/bowling/,"Wickets, runs conceded, overs, economy; grouped by player",bowling staging table
+season,GET /api/eda/season/,Season-wise totals/trends,requires confirmed season/date field or match metadata join
+venue,GET /api/eda/venue/,Venue-wise totals/trends,requires confirmed venue field in metadata
+opposition,GET /api/eda/opposition/,Player performance against opposition,requires confirmed opposition/team fields and join
+recent-form,GET /api/eda/recent-form/,Last 5 chronological player-match records,requires confirmed date/sequence field

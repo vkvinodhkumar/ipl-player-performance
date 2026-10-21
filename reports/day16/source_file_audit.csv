@@ -1,0 +1,4 @@
+dataset,path,exists,rows,columns,duplicate_rows,missing_cells,status
+batting_player_match,D:\Git\Personal\ipl-player-performance\data\processed\batting_player_match.csv,True,18768,24,0,23666,LOADED
+bowling_player_match,D:\Git\Personal\ipl-player-performance\data\processed\bowling_player_match.csv,True,14700,24,0,15295,LOADED
+match_metadata,D:\Git\Personal\ipl-player-performance\data\processed\match_metadata.csv,True,1243,9,0,1294,LOADED

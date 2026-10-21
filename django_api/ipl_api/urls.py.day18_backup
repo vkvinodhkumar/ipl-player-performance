@@ -1,0 +1,7 @@
+from django.urls import include, path
+from .views import PlayerListAPIView, PlayerDetailAPIView
+
+urlpatterns = [
+    path("players/", PlayerListAPIView.as_view(), name="player-list"),
+    path("players/<str:player_name>/", PlayerDetailAPIView.as_view(), name="player-detail"),
+]

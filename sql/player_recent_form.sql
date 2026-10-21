@@ -5,6 +5,6 @@ FROM (
                PARTITION BY player_name ORDER BY date DESC, match_id DESC
            ) AS rn
     FROM batting_player_match
-) ranked
+) AS ranked
 WHERE rn <= 5
-ORDER BY player_name, date DESC;\n
+ORDER BY player_name, date DESC;

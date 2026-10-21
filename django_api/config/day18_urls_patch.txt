@@ -1,0 +1,5 @@
+Merge into django_api/config/urls.py
+
+from django.urls import include, path
+
+Add this item to urlpatterns: path('api/', include('ipl_api.urls')),

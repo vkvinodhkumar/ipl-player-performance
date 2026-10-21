@@ -1,7 +1,7 @@
 target,model_family,model,MAE,RMSE,R2,source
 next_match_runs,Classical ML,LinearRegression,16.850732847777124,22.619523589008026,0.1050801648604401,Day 10 final candidate
-next_match_runs,Deep learning,LSTM,16.700929641723633,22.50565995976589,0.1051880717277526,Day 12 final candidate
+next_match_runs,Deep learning,GRU,16.67267417907715,22.37393748568368,0.1156318187713623,Day 12 final candidate
 next_match_wickets,Classical ML,LinearRegression,0.7677977841455583,0.9892577300753392,0.026481342453283,Day 10 final candidate
-next_match_wickets,Deep learning,LSTM,0.7826477885246277,0.9995786852223012,0.0195199847221374,Day 12 final candidate
+next_match_wickets,Deep learning,LSTM,0.7864498496055603,1.0002678274078605,0.0181676149368286,Day 12 final candidate
 next_match_runs_conceded,Classical ML,XGBoost,9.516070027011583,12.015263468110888,0.0531183793802955,Day 10 final candidate
-next_match_runs_conceded,Deep learning,GRU,9.509530067443848,11.931938433681102,0.0493629574775695,Day 12 final candidate
+next_match_runs_conceded,Deep learning,GRU,9.515055656433104,11.926662138896642,0.0502035021781921,Day 12 final candidate

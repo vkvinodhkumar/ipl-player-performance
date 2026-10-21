@@ -1,0 +1,4 @@
+dataset,table_name,source_rows,status,error
+batting_player_match,stg_ipl_batting_player_match,18768,LOADED,
+bowling_player_match,stg_ipl_bowling_player_match,14700,LOADED,
+match_metadata,stg_ipl_match_metadata,1243,LOADED,

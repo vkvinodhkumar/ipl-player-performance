@@ -1,0 +1,5 @@
+package,available
+Django,True
+Django REST Framework,True
+mysqlclient,True
+python-dotenv,True

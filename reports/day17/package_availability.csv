@@ -1,0 +1,6 @@
+package,available
+django,True
+rest_framework,True
+sqlalchemy,True
+pymysql,True
+dotenv,True

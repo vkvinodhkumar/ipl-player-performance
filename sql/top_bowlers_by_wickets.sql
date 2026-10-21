@@ -4,4 +4,4 @@ SELECT player_name, SUM(wickets) AS total_wickets,
 FROM bowling_player_match
 GROUP BY player_name
 ORDER BY total_wickets DESC
-LIMIT 20;\n
+LIMIT 20;

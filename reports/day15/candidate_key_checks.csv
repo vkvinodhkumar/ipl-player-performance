@@ -1,0 +1,3 @@
+table_name,candidate_key,status,detail
+batting_player_match,match_id + player_name,PASS,"rows=18768, null_key_rows=0, duplicate_key_rows=0"
+bowling_player_match,match_id + player_name,PASS,"rows=14700, null_key_rows=0, duplicate_key_rows=0"
