@@ -1,0 +1,5 @@
+# Day 24 batch prediction route — merge into existing django_api/ipl_api/urls.py
+from .batch_prediction_views import BatchPredictionAPIView
+
+# Add inside existing urlpatterns:
+path("predict/batch/", BatchPredictionAPIView.as_view(), name="predict-batch"),

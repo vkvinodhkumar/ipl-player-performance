@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPL Player Analytics — Predictions</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/ipl_api/css/dashboard_day28.css">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark px-3"><span class="navbar-brand">IPL Player Analytics</span><span class="text-light small">Predictions • Model Comparison • Batch Analysis</span></nav>
+<main class="container-fluid py-4">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+<div><h1 class="h3 mb-1">Prediction & Model Evaluation</h1><p class="text-secondary mb-0">Use registered APIs and saved evaluation metrics.</p></div>
+<a class="btn btn-outline-secondary" href="/api/dashboard/">Back to Day 27 dashboard</a>
+</div>
+<div id="status" class="alert alert-info" role="status">Checking summary API…</div>
+<div class="row g-3">
+<div class="col-12 col-xl-6"><section class="card h-100"><div class="card-header fw-semibold">Single prediction</div><div class="card-body">
+<label class="form-label" for="predictionEndpoint">Prediction endpoint</label>
+<select id="predictionEndpoint" class="form-select mb-3"><option value="">Select only after confirming it is registered</option><option value="/api/predict/batting/">/api/predict/batting/</option><option value="/api/predict/bowling/">/api/predict/bowling/</option><option value="/api/predict/">/api/predict/</option></select>
+<label class="form-label" for="predictionPayload">Request JSON payload</label><textarea id="predictionPayload" class="form-control code-input" rows="7" placeholder="Paste the exact JSON schema expected by your prediction API"></textarea>
+<div class="form-text mb-3">Feature names must match the selected model manifest.</div><button id="runPrediction" class="btn btn-primary">Run prediction</button><pre id="predictionResult" class="result-panel mt-3">No prediction requested.</pre>
+</div></section></div>
+<div class="col-12 col-xl-6"><section class="card h-100"><div class="card-header fw-semibold">Batch player analysis</div><div class="card-body">
+<label class="form-label" for="batchEndpoint">Batch endpoint</label><select id="batchEndpoint" class="form-select mb-3"><option value="">Select only after confirming it is registered</option><option value="/api/predict/batch/">/api/predict/batch/</option><option value="/api/batch/predict/">/api/batch/predict/</option></select>
+<label class="form-label" for="batchPayload">Batch JSON payload</label><textarea id="batchPayload" class="form-control code-input" rows="7" placeholder="Paste the exact batch API payload"></textarea>
+<div class="form-text mb-3">Follow the batch endpoint's documented request schema and size limit.</div><button id="runBatch" class="btn btn-primary">Run batch analysis</button><pre id="batchResult" class="result-panel mt-3">No batch request submitted.</pre>
+</div></section></div>
+<div class="col-12"><section class="card"><div class="card-header fw-semibold">Model evaluation comparison</div><div class="card-body">
+<p class="text-secondary">MAE, RMSE and R² must come from saved evaluation reports or a real metrics endpoint; this page will not fabricate them.</p>
+<label class="form-label" for="metricsEndpoint">Metrics endpoint, if registered</label><input id="metricsEndpoint" class="form-control mb-3" value="/api/eda/model-metrics/">
+<button id="loadMetrics" class="btn btn-outline-primary">Load model metrics</button><pre id="metricsResult" class="result-panel mt-3">Metrics not loaded.</pre>
+</div></section></div>
+</div><p class="small text-secondary mt-4">Predictions are estimates, not guarantees.</p>
+</main><script src="/static/ipl_api/js/dashboard_day28.js"></script></body></html>

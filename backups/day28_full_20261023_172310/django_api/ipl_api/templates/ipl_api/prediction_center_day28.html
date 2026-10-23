@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPL Player Analytics — Prediction Center</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/ipl_api/css/prediction_center_day28.css">
+</head><body>
+<nav class="navbar navbar-dark bg-dark px-3">
+<a class="navbar-brand" href="/api/dashboard/">IPL Player Analytics</a>
+<span class="text-light small">Prediction Center • EDA • Model Evaluation</span></nav>
+<main class="container-fluid py-4">
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+<div><h1 class="h3 mb-1">Prediction Center</h1><p class="text-secondary mb-0">Explore registered APIs and submit prediction payloads.</p></div>
+<a class="btn btn-outline-secondary" href="/api/dashboard/">Back to main dashboard</a></div>
+<div class="alert alert-info">Use the exact input feature names and types required by your model manifest and prediction API. This page does not guess missing features.</div>
+<section class="card mb-4"><div class="card-header fw-semibold">Registered endpoints</div>
+<div class="card-body"><div id="endpointCards" class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3"></div></div></section>
+<section class="card mb-4"><div class="card-header fw-semibold">Player-name prediction</div><div class="card-body">
+<p class="text-secondary">Enter a player name and target. The server builds inputs from the latest historical feature row.</p>
+<div class="row g-3"><div class="col-md-6"><label for="playerName" class="form-label">Player name</label><input id="playerName" class="form-control" placeholder="e.g. V Kohli"></div>
+<div class="col-md-6"><label for="playerTarget" class="form-label">Prediction target</label><select id="playerTarget" class="form-select">
+<option value="next_match_runs">Next-match batting runs</option><option value="next_match_wickets">Next-match wickets</option><option value="next_match_runs_conceded">Next-match runs conceded</option></select></div></div>
+<button id="runPlayerPrediction" class="btn btn-primary mt-3">Predict by player name</button><pre id="playerPredictionResult" class="result-panel mt-3">No request submitted.</pre>
+</div></section>
+<section class="card mb-4"><div class="card-header fw-semibold">JSON single prediction (advanced)</div><div class="card-body">
+<label for="singleEndpoint" class="form-label">Prediction endpoint</label><select id="singleEndpoint" class="form-select mb-3"></select>
+<label for="singlePayload" class="form-label">Request JSON</label><textarea id="singlePayload" class="form-control code-input mb-3" rows="8" placeholder="Paste the exact valid JSON payload for the selected endpoint."></textarea>
+<button id="runSingle" class="btn btn-primary">Run prediction</button><pre id="singleResult" class="result-panel mt-3">No request submitted.</pre>
+</div></section>
+<section class="card mb-4"><div class="card-header fw-semibold">Batch prediction</div><div class="card-body">
+<label for="batchEndpoint" class="form-label">Batch endpoint</label><select id="batchEndpoint" class="form-select mb-3"></select>
+<label for="batchPayload" class="form-label">Batch JSON payload</label><textarea id="batchPayload" class="form-control code-input mb-3" rows="8" placeholder="Paste the exact JSON payload accepted by the batch view."></textarea>
+<button id="runBatch" class="btn btn-primary">Run batch analysis</button><pre id="batchResult" class="result-panel mt-3">No request submitted.</pre>
+</div></section>
+<section class="card"><div class="card-header fw-semibold">Model metrics</div><div class="card-body">
+<p class="text-secondary">MAE, RMSE and R² must come from a real metrics endpoint or saved evaluation reports; values are not fabricated.</p>
+<label for="metricsUrl" class="form-label">Metrics endpoint, if registered</label><input id="metricsUrl" class="form-control mb-3" value="/api/eda/model-metrics/">
+<button id="loadMetrics" class="btn btn-outline-primary">Load metrics</button><pre id="metricsResult" class="result-panel mt-3">Metrics not loaded.</pre>
+</div></section>
+<p class="small text-secondary mt-4">Predictions are estimates, not guarantees.</p></main>
+<script src="/static/ipl_api/js/prediction_center_day28.js"></script></body></html>

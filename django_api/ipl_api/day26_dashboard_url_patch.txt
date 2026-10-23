@@ -1,0 +1,5 @@
+# Day 26 dashboard route patch — merge into existing django_api/ipl_api/urls.py
+from .dashboard_views_day26 import dashboard_day25
+
+# Add to the existing urlpatterns list:
+path("dashboard/", dashboard_day25, name="ipl-dashboard"),

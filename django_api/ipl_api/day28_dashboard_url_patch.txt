@@ -1,0 +1,5 @@
+Add import to django_api/ipl_api/urls.py:
+from .dashboard_views_day28 import dashboard_day28
+
+Add inside existing urlpatterns (do not remove other routes):
+path("dashboard-day28/", dashboard_day28, name="ipl-dashboard-day28"),

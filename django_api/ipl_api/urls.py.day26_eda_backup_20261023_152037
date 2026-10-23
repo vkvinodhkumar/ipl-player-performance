@@ -1,0 +1,9 @@
+from django.urls import path
+from .views import PlayerListAPIView, PlayerDetailAPIView
+
+from .dashboard_views_day26 import dashboard_day25
+urlpatterns = [
+    path("dashboard/", dashboard_day25, name="ipl-dashboard"),
+    path("players/", PlayerListAPIView.as_view(), name="player-list"),
+    path("players/<str:player_name>/", PlayerDetailAPIView.as_view(), name="player-detail"),
+]
