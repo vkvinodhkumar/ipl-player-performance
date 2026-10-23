@@ -2,19 +2,19 @@
 
 ## Generated files
 - `django_api/ipl_api/dashboard_views_day26.py`
-- `django_api/ipl_api/day26_dashboard_url_patch.txt`
+- `django_api/config/urls.py` (updated only if needed)
+- `django_api/ipl_api/urls.py` (dashboard and EDA summary routes merged only if needed)
 
 ## Automated checks
-- View syntax: passed.
 - `manage.py check` return code: 0.
+- URL resolver return code: 0.
 - Day 21 regression test return code: 0.
 
 ## Manual integration still required
-1. Merge the URL import and dashboard path into the existing `urls.py`.
-2. Run `python manage.py check`.
-3. Run `python manage.py runserver`.
-4. Open `http://127.0.0.1:8000/dashboard/`.
-5. Click Refresh summary and inspect the browser result for `/api/eda/summary/`.
-6. Update metric mappings only after observing the actual JSON response.
+1. Run `python manage.py runserver` from `django_api`.
+2. Open `http://127.0.0.1:8000/api/dashboard/`.
+3. Confirm the Day 26 dashboard shell appears.
+4. Test the summary request at `http://127.0.0.1:8000/api/eda/summary/`.
+5. Review the generated detailed report at `docs/day26_api_dashboard_repair_report.md`.
 
-Automated checks do not prove the route was merged, the template renders in a browser, or the API call succeeds.
+Automated checks do not prove database queries, model inference, or browser interactions succeed.

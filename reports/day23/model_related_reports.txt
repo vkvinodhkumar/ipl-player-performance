@@ -15,6 +15,8 @@ reports\day14\metric_consistency_check.csv
 reports\day15\candidate_key_checks.csv
 reports\day16\candidate_key_checks.csv
 reports\day23\feature_dataset_summary.json
+reports\day23\model_related_reports.txt
+reports\day23\prediction_readiness.json
 reports\day5\batting_feature_correlations.csv
 reports\day5\bowling_feature_correlations.csv
 reports\day7\baseline_model_metrics.csv

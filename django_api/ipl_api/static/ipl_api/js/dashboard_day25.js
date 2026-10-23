@@ -1,111 +1,129 @@
 (() => {
-  const $ = (id) => document.getElementById(id);
-  const status = $("statusMessage");
-  const summaryUrl = "/api/eda/summary/";
-  const playerUrl = "/api/players/";
-
-  async function getJson(url) {
-    const response = await fetch(url, { headers: { "Accept": "application/json" } });
-    const text = await response.text();
-    let data;
-    try { data = text ? JSON.parse(text) : {}; }
-    catch (_) { throw new Error(`Expected JSON from ${url}; got a non-JSON response (HTTP ${response.status}).`); }
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const jsonText = value => JSON.stringify(value, null, 2);
+  const show = (id, value) => { const el = $(id); if (el) el.textContent = typeof value === "string" ? value : jsonText(value); };
+  const safeParse = (raw, label) => {
+    try { return JSON.parse(raw); }
+    catch (err) { throw new Error(label + " is not valid JSON: " + err.message); }
+  };
+  async function request(url, options = {}) {
+    const response = await fetch(url, {
+      credentials: "same-origin",
+      headers: { "Accept": "application/json", ...(options.body ? {"Content-Type":"application/json"} : {}), ...(options.headers || {}) },
+      ...options
+    });
+    const raw = await response.text();
+    let body;
+    try { body = raw ? JSON.parse(raw) : null; } catch { body = raw; }
     if (!response.ok) {
-      const detail = data.detail || data.error || data.message || `HTTP ${response.status}`;
-      throw new Error(String(detail));
+      const detail = body && typeof body === "object" ? (body.detail || body.error || body.message || body) : body;
+      throw new Error("HTTP " + response.status + " from " + url + ": " + (typeof detail === "string" ? detail : jsonText(detail)));
     }
-    return data;
+    return body;
   }
+  function setMessage(message, kind = "secondary") {
+    const el = $("globalMessage");
+    if (el) { el.className = "alert alert-" + kind; el.textContent = message; }
+  }
+  document.querySelectorAll("#sectionTabs [data-target]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("#sectionTabs .nav-link").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".feature-section").forEach(s => s.classList.remove("active"));
+      button.classList.add("active");
+      $(button.dataset.target).classList.add("active");
+    });
+  });
 
-  async function loadSummary() {
-    status.className = "alert alert-info";
-    status.textContent = "Loading summary…";
+  async function loadOverview() {
     try {
-      const data = await getJson(summaryUrl);
+      const data = await request("/api/eda/summary/");
+      const obj = data && data.results ? data.results : data;
       const aliases = {
         playersMetric: ["players", "player_count", "total_players"],
         matchesMetric: ["matches", "match_count", "total_matches"],
         battingMetric: ["batting_records", "batting_count"],
         bowlingMetric: ["bowling_records", "bowling_count"]
       };
-      const missing = [];
       for (const [id, keys] of Object.entries(aliases)) {
-        const key = keys.find(k => Object.prototype.hasOwnProperty.call(data, k));
-        if (key) $(id).textContent = Number(data[key]).toLocaleString();
-        else { $(id).textContent = "—"; missing.push(keys[0]); }
+        const key = keys.find(k => obj && obj[k] !== undefined);
+        $(id).textContent = key ? obj[key] : "—";
       }
-      if (missing.length) {
-        status.className = "alert alert-warning";
-        status.textContent = `Summary API responded, but these fields were absent: ${missing.join(", ")}.`;
-      } else {
-        status.className = "alert alert-success";
-        status.textContent = "Summary loaded successfully.";
-      }
-    } catch (err) {
-      status.className = "alert alert-danger";
-      status.textContent = `Could not load summary: ${err.message}`;
-    }
+      setMessage("Summary API reachable. Counts reflect the response fields available from the backend.", "success");
+    } catch (err) { setMessage("Summary API error: " + err.message, "danger"); }
   }
+  $("refreshOverview").addEventListener("click", loadOverview);
+  loadOverview();
 
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, ch => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-    })[ch]);
-  }
-
-  function extractPlayers(data) {
-    if (Array.isArray(data)) return data;
-    if (data && Array.isArray(data.results)) return data.results;
-    if (data && Array.isArray(data.players)) return data.players;
-    if (data && Array.isArray(data.data)) return data.data;
-    return null;
-  }
-
-  $("playerSearchForm").addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const query = $("playerSearchInput").value.trim();
-    const body = $("playerResults");
-    const resultStatus = $("playerSearchStatus");
-    if (!query) {
-      resultStatus.textContent = "Enter a player name to search.";
-      $("playerSearchInput").focus();
-      return;
-    }
-    resultStatus.textContent = "Searching…";
-    body.innerHTML = '<tr><td colspan="2">Loading…</td></tr>';
-    $("playerSearchButton").disabled = true;
-    try {
-      const data = await getJson(`${playerUrl}?search=${encodeURIComponent(query)}&page=1&page_size=20`);
-      const players = extractPlayers(data);
-      if (players === null) {
-        body.innerHTML = '<tr><td colspan="2">The API responded, but its JSON shape is not recognized. Inspect /api/players/ response.</td></tr>';
-        resultStatus.textContent = "Search response format needs mapping.";
-        return;
-      }
-      if (!players.length) {
-        body.innerHTML = '<tr><td colspan="2">No matching players found.</td></tr>';
-        resultStatus.textContent = "Search completed: no matches.";
-        return;
-      }
-      body.innerHTML = players.map((p) => {
-        const name = p.player_name ?? p.name ?? p.player ?? p.full_name ?? "Unnamed player";
-        const details = Object.entries(p)
-          .filter(([k, v]) => !["player_name", "name", "player", "full_name"].includes(k) && ["string", "number", "boolean"].includes(typeof v))
-          .slice(0, 5)
-          .map(([k, v]) => `${k}: ${v}`)
-          .join(" • ");
-        return `<tr><td>${escapeHtml(name)}</td><td>${escapeHtml(details || "Player record returned")}</td></tr>`;
-      }).join("");
-      resultStatus.textContent = `Found ${players.length} result(s).`;
-    } catch (err) {
-      body.innerHTML = '<tr><td colspan="2">Search failed. See the message above.</td></tr>';
-      resultStatus.textContent = `Player search failed: ${err.message}. Confirm the endpoint supports the search parameter.`;
-    } finally {
-      $("playerSearchButton").disabled = false;
-    }
+  $("searchPlayer").addEventListener("click", async () => {
+    const name = $("playerName").value.trim();
+    if (!name) { show("playerResult", "Enter a player name."); return; }
+    try { show("playerResult", await request("/api/players/" + encodeURIComponent(name) + "/")); }
+    catch (err) { show("playerResult", err.message); }
   });
 
-  $("refreshButton").addEventListener("click", loadSummary);
-  // Automatically populate cards when the dashboard opens.
-  loadSummary();
-})(); 
+  // Populate player suggestions only if the configured endpoint supports this GET contract.
+  (async () => {
+    try {
+      const data = await request("/api/players/search-options/");
+      const rows = Array.isArray(data) ? data : (data.results || data.players || []);
+      for (const row of rows) {
+        const value = typeof row === "string" ? row : (row.player_name || row.name);
+        if (value) { const option = document.createElement("option"); option.value = value; $("playerOptions").appendChild(option); }
+      }
+    } catch (err) { console.info("Player suggestions not available:", err.message); }
+  })();
+
+  async function prediction(endpoint, playerId, jsonId, resultId) {
+    const player = $(playerId).value.trim();
+    const raw = $(jsonId).value.trim();
+    try {
+      let payload;
+      if (raw) payload = safeParse(raw, "Feature payload");
+      else if (player) {
+        const target = endpoint.includes("batting") ? "next_match_runs" :
+          (endpoint.includes("bowling") ? "next_match_wickets" : "");
+        if (!target) throw new Error("Select a supported target.");
+        payload = {player_name: player, target: target};
+        show(resultId, await request("/api/predict/player/", {method:"POST", body:JSON.stringify(payload)}));
+        return;
+      } else throw new Error("Enter a player name or provide feature JSON.");
+      show(resultId, await request(endpoint, {method:"POST", body:JSON.stringify(payload)}));
+    } catch (err) { show(resultId, err.message); }
+  }
+  $("runBattingML").addEventListener("click", () => prediction("/api/predict/batting/", "battingPlayer", "battingJson", "battingMLResult"));
+  $("runBowlingML").addEventListener("click", () => prediction("/api/predict/bowling/", "bowlingPlayer", "bowlingJson", "bowlingMLResult"));
+
+  $("loadMetrics").addEventListener("click", async () => {
+    try { show("metricsResult", await request("/api/eda/model-metrics/")); }
+    catch (err) { show("metricsResult", "Saved metrics could not be loaded: " + err.message); }
+  });
+  $("loadEDA").addEventListener("click", async () => {
+    try { show("edaResult", await request($("edaEndpoint").value)); }
+    catch (err) { show("edaResult", err.message); }
+  });
+  $("runBatch").addEventListener("click", async () => {
+    try {
+      const payload = safeParse($("batchJson").value, "Batch payload");
+      const data = await request($("batchEndpoint").value, {method:"POST", body:JSON.stringify(payload)});
+      show("batchResult", data);
+      const exportButton = document.getElementById("downloadBatch");
+      if (exportButton) exportButton.onclick = () => {
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a"); a.href=url; a.download="ipl_batch_results.json"; a.click();
+        URL.revokeObjectURL(url);
+      };
+      if (exportButton) exportButton.hidden = false;
+    } catch (err) { show("batchResult", err.message); }
+  });
+  $("checkStatus").addEventListener("click", async () => {
+    const paths = ["/api/health/", "/api/ingestion/status/"];
+    const results = {};
+    for (const path of paths) {
+      try { results[path] = {available:true, response:await request(path)}; }
+      catch (err) { results[path] = {available:false, detail:err.message}; }
+    }
+    show("statusResult", results);
+  });
+})();

@@ -1,9 +1,9 @@
 # Day 27 — Merged Dashboard and DRF API Repair
 
-- Generated: 2026-10-23T16:07:41
+- Generated: 2026-10-23T21:43:42
 - Repository: `D:\Git\Personal\ipl-player-performance`
 - Settings file: `django_api\config\settings.py`
-- Settings backup: `django_api\config\settings.py.day27_merged_backup_20261023_160737`
+- Settings backup: `django_api\config\settings.py.day27_merged_backup_20261023_214337`
 
 ## Dashboard files updated
 - `django_api\ipl_api\templates\ipl_api\dashboard_day25.html`
@@ -31,7 +31,7 @@ Django Version: 6.0.9
 Python Executable: c:\Users\Vinod\anaconda3\envs\ipl-player-performance\python.exe
 Python Version: 3.12.14
 Python Path: ['D:\\Git\\Personal\\ipl-player-performance\\django_api', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\python312.zip', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\DLLs', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32\\lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\pythonwin']
-Server time: Fri, 23 Oct 2026 10:37:40 +0000
+Server time: Fri, 23 Oct 2026 16:13:41 +0000
 Installed Applications:
 ['django.contrib.admin',
  'django.contrib.auth',
@@ -51,7 +51,7 @@ Django Version: 6.0.9
 Python Executable: c:\Users\Vinod\anaconda3\envs\ipl-player-performance\python.exe
 Python Version: 3.12.14
 Python Path: ['D:\\Git\\Personal\\ipl-player-performance\\django_api', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\python312.zip', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\DLLs', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32\\lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\pythonwin']
-Server time: Fri, 23 Oct 2026 10:37:41 +0000
+Server time: Fri, 23 Oct 2026 16:13:42 +0000
 Installed Applications:
 ['django.contrib.admin',
  'django.contrib.auth',
@@ -71,7 +71,7 @@ Django Version: 6.0.9
 Python Executable: c:\Users\Vinod\anaconda3\envs\ipl-player-performance\python.exe
 Python Version: 3.12.14
 Python Path: ['D:\\Git\\Personal\\ipl-player-performance\\django_api', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\python312.zip', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\DLLs', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\win32\\lib', 'c:\\Users\\Vinod\\anaconda3\\envs\\ipl-player-performance\\Lib\\site-packages\\pythonwin']
-Server time: Fri, 23 Oct 2026 10:37:41 +0000
+Server time: Fri, 23 Oct 2026 16:13:42 +0000
 Installed Applications:
 ['django.contrib.admin',
  'django.contrib.auth',

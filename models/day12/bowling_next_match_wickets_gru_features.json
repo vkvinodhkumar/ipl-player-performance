@@ -1,0 +1,26 @@
+{
+  "dataset": "bowling",
+  "target": "next_match_wickets",
+  "architecture": "GRU",
+  "sequence_length": 5,
+  "feature_columns_in_order": [
+    "prior_career_bowling_wickets",
+    "prior_last5_mean_bowling_wickets",
+    "prior_last5_count_bowling_wickets",
+    "prior_career_bowling_runs_conceded",
+    "prior_last5_mean_bowling_runs_conceded",
+    "prior_last5_count_bowling_runs_conceded",
+    "prior_career_bowling_legal_balls",
+    "prior_last5_mean_bowling_legal_balls",
+    "prior_last5_count_bowling_legal_balls",
+    "prior_career_bowling_dots",
+    "prior_last5_mean_bowling_dots",
+    "prior_last5_count_bowling_dots",
+    "prior_career_bowling_economy",
+    "prior_last5_mean_bowling_economy",
+    "prior_last5_count_bowling_economy"
+  ],
+  "scaling": "StandardScaler fitted on flattened training sequences only",
+  "imputation": "Median imputer fitted on flattened training sequences only",
+  "random_seed": 42
+}

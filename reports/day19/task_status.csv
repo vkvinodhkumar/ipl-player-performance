@@ -6,4 +6,4 @@ project_url_config,D:\Git\Personal\ipl-player-performance\django_api\config\urls
 app_url_config,D:\Git\Personal\ipl-player-performance\django_api\ipl_api\urls.py
 endpoint_test_count,1
 endpoint_test_results,Player list=None
-generated_at,2026-10-21T23:26:15
+generated_at,2026-10-23T21:33:58

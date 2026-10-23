@@ -1,6 +1,6 @@
 {
-  "model_files_found": 22,
-  "feature_or_metadata_files_found": 23,
+  "model_files_found": 26,
+  "feature_or_metadata_files_found": 25,
   "batting_feature_dataset_exists": true,
   "bowling_feature_dataset_exists": true,
   "required_targets": [

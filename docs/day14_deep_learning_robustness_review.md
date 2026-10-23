@@ -14,17 +14,17 @@ day13_interpretation  FOUND          D:\Git\Personal\ipl-player-performance\repo
 ## Error summary
 ```text
                   target  rows  MAE_recomputed  RMSE_recomputed  mean_residual_actual_minus_predicted  median_absolute_error  p90_absolute_error  p95_absolute_error  max_absolute_error
-         next_match_runs  2374       16.672675        22.373938                              2.294101              13.598657           33.723325           46.220604          120.231400
-next_match_runs_conceded  1851        9.515054        11.926662                              3.401205               8.011393           19.483315           23.498824           46.375810
-      next_match_wickets  1851        0.786450         1.000268                              0.009670               0.857174            1.322597            1.981184            4.031054
+         next_match_runs  2374       16.706737        22.493525                              2.379298              13.352062           34.245324           45.780291          119.059250
+next_match_runs_conceded  1851        9.456312        11.845119                              3.307186               7.983307           19.361038           23.433829           46.539734
+      next_match_wickets  1851        0.790386         1.000189                             -0.007816               0.850177            1.325027            1.942337            4.040541
 ```
 
 ## Metric consistency
 ```text
                   target status  recomputed_MAE  reported_MAE  recomputed_RMSE  reported_RMSE
-         next_match_runs  MATCH       16.672675     16.672674        22.373938      22.373937
-next_match_runs_conceded  MATCH        9.515054      9.515056        11.926662      11.926662
-      next_match_wickets  MATCH        0.786450      0.786450         1.000268       1.000268
+         next_match_runs  MATCH       16.706737     16.706738        22.493525      22.493524
+next_match_runs_conceded  MATCH        9.456312      9.456311        11.845119      11.845119
+      next_match_wickets  MATCH        0.790386      0.790386         1.000189       1.000189
 ```
 
 ## Artifact validation
