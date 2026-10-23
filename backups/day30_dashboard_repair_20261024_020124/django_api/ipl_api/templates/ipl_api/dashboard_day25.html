@@ -1,0 +1,358 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPL Player Analytics</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'ipl_api/css/dashboard_day25.css' %}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark px-3">
+  <a class="navbar-brand" href="/api/dashboard/">IPL Player Analytics</a>
+  <span class="text-light small">Performance • Analytics • Prediction</span>
+</nav>
+<main class="container-fluid py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+    <div><h1 class="h3 mb-1">IPL Analytics Workspace</h1><p class="text-secondary mb-0">Historical performance, model estimates and batch analysis.</p></div>
+    <button class="btn btn-outline-secondary" id="refreshOverview">Refresh overview</button>
+  </div>
+  <div id="globalMessage" class="alert alert-secondary" role="status">Loading dashboard overview…</div>
+
+  <ul class="nav nav-pills flex-wrap gap-2 mb-4" id="sectionTabs">
+    <li class="nav-item"><button class="nav-link active" data-target="overview">1. Overview</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="player-search">2. Player Search</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="batting">3. Batting Predictions</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="bowling">4. Bowling Predictions</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="models">5. Model Comparison</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="eda">6. EDA & Analytics</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="batch">7. Batch Analysis</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="ingestion">8. Ingestion & Status</button></li>
+  </ul>
+
+  <section class="feature-section active" id="overview">
+    <h2 class="h4">Dashboard Overview</h2>
+    <div class="row g-3" id="overviewCards">
+      <div class="col-6 col-xl-3"><div class="card metric-card"><div class="card-body"><div class="text-secondary">Players</div><div class="metric-value" id="playersMetric">—</div></div></div></div>
+      <div class="col-6 col-xl-3"><div class="card metric-card"><div class="card-body"><div class="text-secondary">Matches</div><div class="metric-value" id="matchesMetric">—</div></div></div></div>
+      <div class="col-6 col-xl-3"><div class="card metric-card"><div class="card-body"><div class="text-secondary">Batting records</div><div class="metric-value" id="battingMetric">—</div></div></div></div>
+      <div class="col-6 col-xl-3"><div class="card metric-card"><div class="card-body"><div class="text-secondary">Bowling records</div><div class="metric-value" id="bowlingMetric">—</div></div></div></div>
+    </div>
+    <p class="text-secondary mt-3">Counts are populated from the registered EDA summary endpoint.</p>
+  </section>
+
+  <section class="feature-section" id="player-search">
+    <h2 class="h4">Player Search & Historical Performance</h2>
+    <div class="row g-3"><div class="col-lg-5">
+      <label class="form-label" for="playerName">Player name</label>
+      <input class="form-control" id="playerName" list="playerOptions" placeholder="Start typing a player name"
+      <datalist id="playerOptions"</datalist list="playerOptions" list="playerOptions">
+      <button class="btn btn-primary mt-2" id="searchPlayer">Search player</button>
+    </div><div class="col-lg-7"><pre class="result-box" id="playerResult">Search for a player to see historical summary.</pre></div></div>
+  </section>
+
+  <section class="feature-section" id="batting">
+    <h2 class="h4">Batting Predictions</h2>
+    <div class="row g-3">
+      <div class="col-xl-6"><div class="card h-100"><div class="card-header">ML — Single prediction</div><div class="card-body">
+        <label class="form-label" for="battingPlayer">Player name (if supported by your registered player-name API)</label>
+        <input class="form-control mb-2" id="battingPlayer" placeholder="Player name" list="playerOptions"
+        <label class="form-label" for="battingJson" list="playerOptions" list="playerOptions">Or provide the exact feature JSON expected by the model</label>
+        <textarea class="form-control code-input" id="battingJson" placeholder='{"feature_name": 0}'></textarea>
+        <button class="btn btn-primary mt-2" id="runBattingML">Run ML prediction</button>
+        <pre class="result-box mt-3" id="battingMLResult">No batting prediction requested.</pre>
+      </div></div></div>
+      <div class="col-xl-6"><div class="card h-100"><div class="card-header">DL — Single prediction</div><div class="card-body">
+        <div class="alert alert-info" id="battingDLStatus">Enter a player name. The API will fetch the player's latest five historical matches from the database and build the saved DL model sequence.</div>
+        <label class="form-label" for="battingDLPlayer">Player name</label>
+        <input class="form-control mb-2" id="battingDLPlayer" list="playerOptions" placeholder="e.g. V Kohli"
+        <p class="small text-secondary mb-2"Sequence source: latest five database matches, ordered oldest to newest.</p list="playerOptions" list="playerOptions">
+<label class="form-label mt-2" for="battingDLJson">Or provide DL sequence JSON instead</label>
+<textarea class="form-control mb-2" id="battingDLJson" rows="3" placeholder='{"target":"next_match_runs","sequence":[[0,0],[0,0],[0,0],[0,0],[0,0]],"preprocessed":false}'></textarea>
+        <button class="btn btn-primary mt-1" id="runBattingDL">Run batting DL prediction</button>
+        <pre class="result-box mt-3" id="battingDLResult">Enter a player name to predict.</pre>
+      </div></div></div>
+    </div>
+  </section>
+
+  <section class="feature-section" id="bowling">
+    <h2 class="h4">Bowling Predictions</h2>
+    <div class="row g-3">
+      <div class="col-xl-6"><div class="card h-100"><div class="card-header">ML — Single prediction</div><div class="card-body">
+        <label class="form-label" for="bowlingPlayer">Player name (if supported by your registered player-name API)</label>
+        <input class="form-control mb-2" id="bowlingPlayer" placeholder="Player name" list="playerOptions"
+        <label class="form-label" for="bowlingMLTarget" list="playerOptions" list="playerOptions">Prediction target</label>
+        <select class="form-select mb-2" id="bowlingMLTarget">
+          <option value="next_match_wickets">Next-match wickets</option>
+          <option value="next_match_runs_conceded">Next-match runs conceded</option>
+        </select>
+        <label class="form-label" for="bowlingJson">Or exact feature JSON</label>
+        <textarea class="form-control code-input" id="bowlingJson" placeholder='{"feature_name": 0}'></textarea>
+        <button class="btn btn-primary mt-2" id="runBowlingML">Run ML prediction</button>
+        <pre class="result-box mt-3" id="bowlingMLResult">No bowling prediction requested.</pre>
+      </div></div></div>
+      <div class="col-xl-6"><div class="card h-100"><div class="card-header">DL — Single prediction</div><div class="card-body">
+        <div class="alert alert-info" id="bowlingDLStatus">Enter a player name. The API will fetch the player's latest five historical matches from the database and build the saved DL model sequence.</div>
+        <label class="form-label" for="bowlingDLPlayer">Player name</label>
+        <input class="form-control mb-2" id="bowlingDLPlayer" list="playerOptions" placeholder="e.g. Jasprit Bumrah"
+        <p class="small text-secondary mb-2"Choose the target below. The last five matches are loaded automatically.</p list="playerOptions" list="playerOptions">
+<label class="form-label mt-2" for="bowlingDLJson">Or provide DL sequence JSON instead</label>
+<textarea class="form-control mb-2" id="bowlingDLJson" rows="3" placeholder='{"target":"next_match_wickets","sequence":[[0,0],[0,0],[0,0],[0,0],[0,0]],"preprocessed":false}'></textarea>
+        <label class="form-label" for="bowlingDLTarget">Bowling target</label>
+        <select class="form-select mb-2" id="bowlingDLTarget">
+          <option value="next_match_wickets">Next-match wickets</option>
+          <option value="next_match_runs_conceded">Next-match runs conceded</option>
+        </select>
+        <button class="btn btn-primary mt-1" id="runBowlingDL">Run bowling DL prediction</button>
+        <pre class="result-box mt-3" id="bowlingDLResult">Enter a player name to predict.</pre>
+      </div></div></div>
+    </div>
+  </section>
+
+  <section class="feature-section" id="models">
+    <h2 class="h4">Model Comparison</h2>
+    <p>Displays saved evaluation metrics only when the metrics endpoint returns them. It does not invent or recalculate model scores in the browser.</p>
+    <button class="btn btn-primary" id="loadMetrics">Load saved model metrics</button>
+    <pre class="result-box mt-3" id="metricsResult">Metrics not loaded.</pre>
+  </section>
+
+  <section class="feature-section" id="eda">
+    <h2 class="h4">EDA & Analytics</h2>
+    <div class="row g-2 align-items-end">
+      <div class="col-md-5"><label class="form-label" for="edaEndpoint">Analysis</label>
+        <select class="form-select" id="edaEndpoint">
+          <option value="/api/eda/summary/">Summary</option><option value="/api/eda/batting/">Batting</option>
+          <option value="/api/eda/bowling/">Bowling</option><option value="/api/eda/season/">Season</option>
+          <option value="/api/eda/venue/">Venue</option>
+          
+        </select>
+      </div>
+      <div class="col-md-3"><button class="btn btn-primary" id="loadEDA">Load analysis</button></div>
+    </div>
+    <pre class="result-box mt-3" id="edaResult">Select an analysis and load it.</pre>
+  </section>
+
+  <section class="feature-section" id="batch">
+    <h2 class="h4">Batch Player Analysis</h2>
+    <p>Submit the documented batch endpoint payload. The feature JSON must follow the selected target's model manifest; player names alone work only if the backend explicitly supports them.</p>
+    <div class="row g-3">
+      <div class="col-lg-6"><label class="form-label" for="batchEndpoint">Batch endpoint</label>
+        <select class="form-select mb-2" id="batchEndpoint"><option value="/api/predict/batch/">ML batch prediction</option></select>
+        <label class="form-label" for="batchJson">Batch JSON payload</label>
+        <textarea class="form-control code-input" id="batchJson" placeholder='Paste the exact payload expected by the batch API'></textarea>
+        <button class="btn btn-primary mt-2" id="runBatch">Run batch analysis</button> <button class="btn btn-outline-secondary mt-2" id="downloadBatch" hidden>Download JSON results</button>
+      </div><div class="col-lg-6"><pre class="result-box" id="batchResult">No batch request submitted.</pre></div>
+    </div>
+  </section>
+
+  <section class="feature-section" id="ingestion">
+    <h2 class="h4">Data Ingestion & Status</h2>
+    <p>This section reports the availability of registered endpoints. It will not trigger a data import unless a verified ingestion endpoint exists.</p>
+    <button class="btn btn-outline-primary" id="checkStatus">Check ingestion/status endpoints</button>
+    <pre class="result-box mt-3" id="statusResult">Status not checked.</pre>
+  </section>
+</main>
+<script src="{% static 'ipl_api/js/dashboard_day25.js' %}"></script>
+<script>
+
+/* DAY33_UI_LOADING_AUTOCOMPLETE_HELPER_START */
+(function () {
+  if (window.__day33UiHelperInstalled) return;
+  window.__day33UiHelperInstalled = true;
+
+  // Autocomplete: use the dashboard's existing player API only.
+  const playerSearchUrl = "/api/players/?search=";
+  function getNames(data) {
+    const arr = Array.isArray(data) ? data :
+      (data.results || data.players || data.options || data.data || []);
+    return arr.map(item => typeof item === "string" ? item :
+      (item.player_name || item.name || item.full_name || item.player || item.label || ""))
+      .filter(Boolean);
+  }
+
+  if (playerSearchUrl) {
+    const inputs = Array.from(document.querySelectorAll("input")).filter(input => {
+      const text = [input.id, input.name, input.placeholder,
+        input.getAttribute("aria-label"),
+        input.parentElement?.querySelector("label")?.textContent].filter(Boolean).join(" ");
+      return /player[\s_-]*name/i.test(text);
+    });
+
+    inputs.forEach(input => {
+      if (input.dataset.day33Autocomplete === "1") return;
+      input.dataset.day33Autocomplete = "1";
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+      input.parentNode.insertBefore(wrapper, input);
+      wrapper.appendChild(input);
+
+      const list = document.createElement("div");
+      list.hidden = true;
+      list.setAttribute("role", "listbox");
+      list.style.cssText = "position:absolute;z-index:99999;left:0;right:0;top:100%;max-height:220px;overflow:auto;background:#fff;border:1px solid #cbd5e1;border-radius:6px;box-shadow:0 4px 12px #0003";
+      wrapper.appendChild(list);
+
+      let timer = null, requestSeq = 0;
+      function closeList() { list.hidden = true; list.replaceChildren(); }
+      let suppressAutocompleteOnce = false;
+      function choose(name) {
+        clearTimeout(timer);
+        requestSeq++; // invalidate any in-flight suggestion request
+        suppressAutocompleteOnce = true;
+        input.value = name;
+        input.dispatchEvent(new Event("input", {bubbles:true}));
+        input.dispatchEvent(new Event("change", {bubbles:true}));
+        closeList();
+        // Keep the selected canonical name; do not immediately reopen the same suggestion.
+        window.setTimeout(() => { suppressAutocompleteOnce = false; }, 0);
+      }
+      input.addEventListener("input", () => {
+        if (suppressAutocompleteOnce) { closeList(); return; }
+        const q = input.value.trim();
+        clearTimeout(timer);
+        const seq = ++requestSeq;
+        if (q.length < 2) { closeList(); return; }
+        timer = setTimeout(async () => {
+          try {
+            const sep = playerSearchUrl.includes("?") ? "&" : "?";
+            const response = await window.fetch(playerSearchUrl + sep + "search=" + encodeURIComponent(q), {
+              headers: {"Accept":"application/json"}
+            });
+            if (!response.ok) throw new Error("Player search HTTP " + response.status);
+            const data = await response.json();
+            if (seq !== requestSeq || input.value.trim() !== q) return;
+            const names = [...new Set(getNames(data))]
+              .filter(n => n.toLowerCase().includes(q.toLowerCase())).slice(0, 12);
+            list.replaceChildren();
+            names.forEach(name => {
+              const option = document.createElement("button");
+              option.type = "button";
+              option.setAttribute("role", "option");
+              option.tabIndex = -1;
+              option.textContent = name;
+              option.style.cssText = "display:block;width:100%;text-align:left;padding:9px 10px;border:0;background:#fff;color:#111827;cursor:pointer";
+              option.addEventListener("pointerdown", event => {
+                // Keep focus on the input; prevents blur from hiding the option before click.
+                event.preventDefault();
+                choose(name);
+              });
+              option.addEventListener("mouseenter", () => option.style.background = "#eaf2ff");
+              option.addEventListener("mouseleave", () => option.style.background = "#fff");
+              list.appendChild(option);
+            });
+            list.hidden = names.length === 0;
+          } catch (error) {
+            closeList();
+            console.warn("Player autocomplete failed:", error);
+          }
+        }, 220);
+      });
+      input.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeList();
+        if (event.key === "ArrowDown" && !list.hidden) {
+          event.preventDefault();
+          const first = list.querySelector('[role="option"]');
+          if (first) { event.preventDefault(); first.dispatchEvent(new PointerEvent("pointerdown", {bubbles:true, cancelable:true})); }
+        }
+      });
+      document.addEventListener("pointerdown", event => {
+        if (!wrapper.contains(event.target)) closeList();
+      });
+    });
+  } else {
+    console.warn("Autocomplete not installed: no existing player-search URL found in dashboard JS.");
+  }
+
+  // Loading state belongs to the prediction button and JSON result panel, never nav tabs.
+  const originals = new WeakMap();
+  const active = new WeakSet();
+
+  // Keep navigation tabs stable even if an older dashboard script accidentally changes one.
+  const navLabelSnapshot = new WeakMap();
+  function rememberNavLabels() {
+    document.querySelectorAll("button, a").forEach(el => {
+      const label = (el.textContent || "").trim();
+      if (/^(?:[1-8]\.\s*)?(?:overview|player search|batting predictions|bowling predictions|model comparison|eda\s*&\s*analytics|batch analysis|ingestion\s*&\s*status)$/i.test(label)) {
+        navLabelSnapshot.set(el, label);
+      }
+    });
+  }
+  rememberNavLabels();
+  const navObserver = new MutationObserver(() => {
+    document.querySelectorAll("button, a").forEach(el => {
+      const label = (el.textContent || "").trim();
+      const original = navLabelSnapshot.get(el);
+      if (original && /predicting|spinner/i.test(label)) el.textContent = original;
+    });
+  });
+  navObserver.observe(document.body, {subtree:true, childList:true, characterData:true});
+  function findResult(button) {
+    const card = button.closest(".card");
+    if (card) {
+      const all = Array.from(card.querySelectorAll("pre, code, .json-result, [id$='Result'], [id$='Status'], .prediction-result"));
+      if (all.length) return all[all.length - 1];
+    }
+    return button.closest("form")?.querySelector("pre, .json-result, [id$='Result'], [id$='Status'], .prediction-result") || null;
+  }
+  function restore(button) {
+    if (!active.has(button)) return;
+    active.delete(button);
+    button.disabled = false;
+    button.removeAttribute("aria-busy");
+    button.textContent = originals.get(button) || "Run prediction";
+  }
+  document.addEventListener("click", event => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    const label = (button.textContent || "").trim();
+    if (!/^run\s+(?:ml|batting\s+dl|bowling\s+dl|.*batch|.*player)?\s*.*prediction$/i.test(label) || /predicting/i.test(label)) return;
+    const result = findResult(button);
+    if (!result) return;
+    originals.set(button, label);
+    active.add(button);
+    button.disabled = true;
+    button.setAttribute("aria-busy", "true");
+    button.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Predicting…';
+    result.textContent = "Prediction in progress… Please wait for the model/API response.";
+    result.setAttribute("aria-live", "polite");
+    // Do not leave controls stuck if the backend never returns.
+    window.setTimeout(() => {
+      if (active.has(button)) {
+        restore(button);
+        if ((result.textContent || "").includes("Prediction in progress")) {
+          result.textContent = "The API is taking longer than expected. Check the Django terminal/Network tab for details.";
+        }
+      }
+    }, 90000);
+  }, true);
+
+  // Restore only after a prediction endpoint responds; autocomplete requests do not unlock buttons.
+  if (!window.__day33PredictionFetchWrapped) {
+    window.__day33PredictionFetchWrapped = true;
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = async function (...args) {
+      const url = String(args[0]?.url || args[0] || "");
+      const isPrediction = /predict/i.test(url);
+      try {
+        const response = await originalFetch(...args);
+        if (isPrediction) {
+          window.setTimeout(() => {
+            document.querySelectorAll('button[aria-busy="true"]').forEach(button => restore(button));
+          }, 700);
+        }
+        return response;
+      } catch (error) {
+        if (isPrediction) {
+          document.querySelectorAll('button[aria-busy="true"]').forEach(button => restore(button));
+        }
+        throw error;
+      }
+    };
+  }
+})();
+/* DAY33_UI_LOADING_AUTOCOMPLETE_HELPER_END */
+
+</script>
+</body>
+</html>

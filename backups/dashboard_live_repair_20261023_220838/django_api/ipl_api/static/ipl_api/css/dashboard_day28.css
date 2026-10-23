@@ -1,0 +1,5 @@
+body { background:#f4f6fb; color:#172033; }
+.card { border:0; box-shadow:0 3px 14px rgba(20,35,60,.07); }
+.card-header { background:#fff; }
+.code-input,.result-panel { font-family:Consolas,"Courier New",monospace; font-size:.9rem; }
+.result-panel { min-height:72px; max-height:360px; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere; background:#111827; color:#e5e7eb; padding:1rem; border-radius:.4rem; }

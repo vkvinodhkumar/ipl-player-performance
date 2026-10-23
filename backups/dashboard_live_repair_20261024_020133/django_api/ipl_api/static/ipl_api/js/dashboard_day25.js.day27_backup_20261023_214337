@@ -1,0 +1,27 @@
+(() => {
+  const status = document.getElementById("statusMessage");
+  document.getElementById("refreshButton").addEventListener("click", async () => {
+    status.className = "alert alert-info";
+    status.textContent = "Checking /api/eda/summary/…";
+    try {
+      const response = await fetch("/api/eda/summary/", {headers: {"Accept": "application/json"}});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const aliases = {
+        playersMetric: ["players", "player_count", "total_players"],
+        matchesMetric: ["matches", "match_count", "total_matches"],
+        battingMetric: ["batting_records", "batting_count"],
+        bowlingMetric: ["bowling_records", "bowling_count"]
+      };
+      for (const [id, keys] of Object.entries(aliases)) {
+        const key = keys.find(k => Object.prototype.hasOwnProperty.call(data, k));
+        if (key) document.getElementById(id).textContent = data[key];
+      }
+      status.className = "alert alert-success";
+      status.textContent = "Summary endpoint responded. Verify metric field mappings against the actual response.";
+    } catch (error) {
+      status.className = "alert alert-warning";
+      status.textContent = `Could not load summary: ${error.message}. Check route and server.`;
+    }
+  });
+})();

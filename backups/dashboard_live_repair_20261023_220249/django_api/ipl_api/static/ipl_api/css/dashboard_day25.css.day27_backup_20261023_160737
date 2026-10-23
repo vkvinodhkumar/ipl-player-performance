@@ -1,0 +1,5 @@
+body { background: #f5f7fb; color: #172033; }
+.metric-card { border: 0; box-shadow: 0 2px 12px rgba(25,35,60,.06); min-height: 118px; }
+.metric-value { font-size: 2rem; font-weight: 700; margin-top: .25rem; }
+.card { border-color: #e7eaf1; }
+#playerResults td { overflow-wrap: anywhere; }

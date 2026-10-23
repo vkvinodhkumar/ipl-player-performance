@@ -1,0 +1,10 @@
+body { background: #f5f7fb; color: #172033; }
+.metric-card { border: 0; box-shadow: 0 2px 12px rgba(25,35,60,.06); min-height: 118px; }
+.metric-value { font-size: 2rem; font-weight: 700; margin-top: .25rem; }
+.card { border-color: #e7eaf1; }
+#playerResults td { overflow-wrap: anywhere; }
+
+/* Day 28 Prediction Center */
+#prediction-center-day28 .btn { white-space: normal; border-radius: .65rem; min-height: 92px; }
+#prediction-center-day28 .btn strong { font-size: 1rem; }
+#prediction-center-day28 .btn:disabled { opacity: .7; cursor: not-allowed; }

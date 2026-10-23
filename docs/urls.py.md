@@ -1,6 +1,6 @@
 # File documentation: `django_api\ipl_api\urls.py`
 
-- Generated: 2026-10-23T21:52:24
+- Generated: 2026-10-24T02:01:30
 - Exists at documentation time: True
 - Bytes: 2143
 - Purpose: Generated project asset.

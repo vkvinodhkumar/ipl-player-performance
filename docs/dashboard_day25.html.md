@@ -1,6 +1,6 @@
 # File documentation: `django_api\ipl_api\templates\ipl_api\dashboard_day25.html`
 
-- Generated: 2026-10-23T21:52:24
+- Generated: 2026-10-24T02:01:30
 - Exists at documentation time: True
 - Bytes: 10068
 - Purpose: Django HTML template for the eight dashboard sections and their controls.

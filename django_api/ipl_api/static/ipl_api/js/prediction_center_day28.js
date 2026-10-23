@@ -1,3 +1,23 @@
+
+(function day31InstallCsrfFetch() {
+  if (window.__day31CsrfFetchInstalled) return;
+  window.__day31CsrfFetchInstalled = true;
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = function(input, init) {
+    init = init || {};
+    const method = String(init.method || "GET").toUpperCase();
+    const url = typeof input === "string" ? input : (input && input.url) || "";
+    if (method === "POST" && (url.startsWith("/") || url.startsWith(window.location.origin))) {
+      const match = document.cookie.match(/(?:^|; )csrftoken=([^;]+)/);
+      const token = match ? decodeURIComponent(match[1]) : "";
+      const headers = new Headers(init.headers || (input instanceof Request ? input.headers : undefined));
+      if (token && !headers.has("X-CSRFToken")) headers.set("X-CSRFToken", token);
+      init = Object.assign({}, init, {headers: headers, credentials: init.credentials || "same-origin"});
+    }
+    return originalFetch(input, init);
+  };
+})();
+
 (() => {
 const ROUTES = {"batting": {"fragment": "predict/batting/", "url": "/api/predict/batting/", "label": "Batting Prediction", "description": "Estimate next-match runs.", "registered": true}, "bowling": {"fragment": "predict/bowling/", "url": "/api/predict/bowling/", "label": "Bowling Prediction", "description": "Estimate wickets and runs conceded.", "registered": true}, "batch": {"fragment": "predict/batch/", "url": "/api/predict/batch/", "label": "Batch Prediction", "description": "Submit multiple player records.", "registered": true}, "batch_alt": {"fragment": "batch/predict/", "url": "/api/batch/predict/", "label": "Batch Prediction", "description": "Alternate batch route.", "registered": false}, "unified": {"fragment": "predict/", "url": "/api/predict/", "label": "Unified Prediction API", "description": "Use the endpoint's documented schema.", "registered": true}, "summary": {"fragment": "eda/summary/", "url": "/api/eda/summary/", "label": "EDA Summary", "description": "Historical dataset summary.", "registered": true}, "batting_eda": {"fragment": "eda/batting/", "url": "/api/eda/batting/", "label": "Batting EDA", "description": "Batting analytics.", "registered": true}, "bowling_eda": {"fragment": "eda/bowling/", "url": "/api/eda/bowling/", "label": "Bowling EDA", "description": "Bowling analytics.", "registered": true}, "recent": {"fragment": "eda/recent-form/", "url": "/api/eda/recent-form/", "label": "Recent Form", "description": "Recent player performance.", "registered": true}};
 const $ = id => document.getElementById(id);
